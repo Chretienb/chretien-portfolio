@@ -22,11 +22,11 @@ function About() {
       <h3 className="about-subtitle">What I Build</h3>
       <p className="about-lead">I&apos;m interested in:</p>
       <ul className="about-list">
-        <li>Software Engineering</li>
-        <li>FinTech & Financial Infrastructure</li>
-        <li>Startup Development</li>
-        <li>Scalable Backend Systems</li>
-        <li>Security & Performance</li>
+        <li>Software Engineering & Fintech Infrastructure</li>
+        <li>Agentic AI — LLMs, RAG, multi-step reasoning</li>
+        <li>Startup Development & Product Architecture</li>
+        <li>Scalable Backend Systems & Async Processing</li>
+        <li>Cross-border Payments & Financial Identity</li>
       </ul>
       <p>I don&apos;t just write code — I think about architecture, scalability, and how products evolve over time.</p>
 
@@ -77,8 +77,8 @@ function About() {
         <li><span className="about-year mono">2022</span> E2i — Technical PM at Utah County Fair</li>
         <li><span className="about-year mono">2023</span> Co-founded Drawfi</li>
         <li><span className="about-year mono">2024</span> Sandbox Accelerator — Founder Track</li>
-        <li><span className="about-year mono">2025</span> Co-founded PML · Wolverine Fund Associate</li>
-        <li><span className="about-year mono">2026</span> FinTech Center · B.S. Computational Data Science (Dec)</li>
+        <li><span className="about-year mono">2025</span> Co-founded PML · Wolverine Fund Associate · Teyka SWE</li>
+        <li><span className="about-year mono">2026</span> NVIDIA DLI Certification · FinTech Center · B.S. Computational Data Science (Dec)</li>
       </ul>
 
       <h3 className="about-subtitle">Who I Am</h3>

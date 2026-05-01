@@ -1,98 +1,87 @@
-import { useState, useEffect } from 'react'
-
-const experiences: Array<{
-  company: string
-  role: string
-  period: string
-  desc: string
-  link?: { label: string; url: string }
-}> = [
+const experiences = [
   {
-    company: 'Wolverine Fund (UVU)',
-    role: 'Associate',
-    period: 'Dec 2025 – Present',
-    desc: 'Due diligence on early-stage startups (fintech, SaaS, consumer). TAM/SAM/SOM, financial modeling, risk & scalability analysis.',
-    link: { label: 'Wolverine Fund', url: 'https://www.uvu.edu/wolverinefund/' },
+    date: 'Dec 2023 — Now',
+    role: 'Software Engineer — Founding Team',
+    company: '▸ DrawFi',
+    bullets: [
+      'Architected and shipped a production fintech platform from 0→1 using Rust, TypeScript, and Supabase',
+      'Engineered secure REST APIs with JWT-based auth and role-based access control (RBAC)',
+      'Built LLM-powered document intelligence pipeline reducing manual financial review time significantly',
+      'Designed async processing architecture improving system throughput and scalability',
+    ],
   },
   {
-    company: 'FinTech Center (UFTC), UVU',
+    date: '2025 — Now',
+    role: 'Software Engineer',
+    company: '▸ Teyka',
+    bullets: [
+      'Engineered a payment gateway connecting mobile wallets to global commerce across multiple currencies',
+      'Built high-reliability backend for FX conversion, transaction routing, and cross-border payment orchestration',
+      'Automated operational workflows with n8n, reducing manual intervention in payment processing',
+    ],
+  },
+  {
+    date: '2025 — Now',
+    role: 'Software Engineer',
+    company: '▸ PML (PayeMonLoyer)',
+    bullets: [
+      'Developed backend infrastructure for a financial identity and credit-scoring platform',
+      'Implemented machine learning-informed scoring models and production-grade API layer',
+    ],
+  },
+  {
+    date: '2026 — Now',
     role: 'Program Assistant',
-    period: 'Feb 2026 – Present',
-    desc: 'Fintech research and industry partnerships across AI, data science, and financial technology.',
-    link: { label: 'UVU FinTech Center', url: 'https://www.uvu.edu/news/school-of-business/2026/uvu-fintech-center-ribbon-cutting.html' },
+    company: '▸ FinTech Center, UVU',
+    bullets: [
+      'Collaborated on AI and fintech research initiatives with industry and academic partners',
+      'Managed event logistics and maintained analytics dashboards tracking program KPIs',
+    ],
   },
   {
-    company: 'E2i, UVU',
-    role: 'Technical Product Manager (Contract)',
-    period: 'Dec 2022 – Dec 2023',
-    desc: 'Contracting at Utah County Fair. Led cross-functional teams delivering software products—requirements, timelines, stakeholder communication.',
-    link: { label: 'Utah County Fair 2026', url: 'https://www.utahcountyfair.org/2026/' },
+    date: '2025 — Now',
+    role: 'Associate · Investment Analyst',
+    company: '▸ Wolverine Fund, UVU',
+    bullets: [
+      'Screened and evaluated early-stage startups across AI, SaaS, and fintech for investment potential',
+      'Produced market research reports and due diligence memos to support fund decisions',
+    ],
   },
   {
-    company: 'Sandbox Accelerator, UVU',
-    role: 'Founder Track',
-    period: 'April 2024 – 2025',
-    desc: 'Selective accelerator for founders building startups. Drawfi emerged from this program.',
-    link: { label: 'Drawfi', url: 'https://drawfi.io' },
+    date: '2022 — 2023',
+    role: 'Project Manager',
+    company: '▸ E2i, UVU',
+    bullets: [
+      'Directed cross-functional engineering teams to deliver software projects on time and within scope',
+      'Owned stakeholder communication, sprint planning, and risk management across multiple workstreams',
+    ],
   },
 ]
 
-function Experience() {
-  const [selected, setSelected] = useState<typeof experiences[0] | null>(null)
-
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelected(null)
-    }
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
-
+export default function Experience() {
   return (
-    <section id="experience" className="section">
-      <h2 className="section-title">Experience</h2>
-      <div className="experience-list">
-        {experiences.map((e) => (
-          <article
-            key={e.company}
-            className="experience-card"
-            onClick={() => setSelected(e)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(ev) => ev.key === 'Enter' && setSelected(e)}
-            aria-label={`View details for ${e.company}`}
-          >
-            <div className="experience-header">
-              <h3>{e.company}</h3>
-              <span className="experience-role">{e.role}</span>
-            </div>
-            <p className="experience-period mono">{e.period}</p>
-            <p className="experience-desc">{e.desc}</p>
-            <span className="experience-hint mono">Click for details</span>
-          </article>
-        ))}
-      </div>
+    <section id="experience">
+      <div className="wrap">
+        <div className="section-tag" data-reveal>// 03 — Experience</div>
+        <h2 className="section-title" data-reveal>
+          Where I've Worked<span className="cursor-blink" />
+        </h2>
 
-      {selected && (
-        <div className="modal-backdrop" onClick={() => setSelected(null)}>
-          <div className="modal" onClick={(ev) => ev.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelected(null)} aria-label="Close">
-              ×
-            </button>
-            <h3 className="modal-title">{selected.company}</h3>
-            <p className="modal-role">{selected.role}</p>
-            <p className="modal-period mono">{selected.period}</p>
-            <p className="modal-desc">{selected.desc}</p>
-            {selected.link && (
-              <a href={selected.link.url} target="_blank" rel="noopener noreferrer" className="modal-link">
-                {selected.link.label} →
-              </a>
-            )}
-          </div>
+        <div className="exp-list" data-reveal>
+          {experiences.map((e) => (
+            <div key={e.company} className="exp-item">
+              <div className="exp-date">{e.date}</div>
+              <div>
+                <div className="exp-role">{e.role}</div>
+                <div className="exp-co">{e.company}</div>
+                <ul className="exp-bullets">
+                  {e.bullets.map(b => <li key={b}>{b}</li>)}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
     </section>
   )
 }
-
-export default Experience

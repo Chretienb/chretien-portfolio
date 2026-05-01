@@ -1,34 +1,68 @@
-const links = [
-  { label: 'Resume', href: '/CHRETIEN%20BANZA%202026%20Resume.pdf', value: 'Download PDF', external: false },
-  { label: 'Email', href: 'mailto:chretienbanza1@gmail.com', value: 'chretienbanza1@gmail.com', external: true },
-  { label: 'GitHub', href: 'https://github.com/Chretienb', value: 'github.com/Chretienb', external: true },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/chretien-banza-042831242', value: 'linkedin.com/in/chretien-banza', external: true },
-  { label: 'Substack', href: 'https://chretienbanza.substack.com', value: 'I write articles', external: true },
-]
-
-function Contact() {
+export default function Contact() {
   return (
-    <section id="contact" className="section contact">
-      <h2 className="section-title">Contact</h2>
-      <p className="contact-intro">Open to opportunities. Let's connect.</p>
-      <div className="contact-links">
-        {links.map((link) => (
+    <section id="contact">
+      <div className="wrap">
+        <div className="section-tag" data-reveal>// 04 — Get In Touch</div>
+        <h2 className="section-title" data-reveal>
+          Let's Build Something<span className="cursor-blink" />
+        </h2>
+
+        <div className="contact-grid" data-reveal>
           <a
-            key={link.label}
-            href={link.href}
-            target={link.external !== false ? '_blank' : undefined}
-            rel={link.external !== false ? 'noopener noreferrer' : undefined}
-            download={link.href.endsWith('.pdf') ? 'Chretien_Banza_Resume.pdf' : undefined}
-            className="contact-link"
+            href="mailto:chretienbanza1@gmail.com"
+            className="contact-block"
+            style={{ display: 'block' }}
           >
-            <span className="contact-label">{link.label}</span>
-            <span className="contact-value mono">{link.value}</span>
+            <div className="contact-label">Email</div>
+            <div className="contact-val">chretienbanza1@gmail.com</div>
+            <div className="contact-sub">Respond within 24 hours</div>
           </a>
-        ))}
+
+          <a
+            href="https://github.com/Chretienb"
+            target="_blank" rel="noopener noreferrer"
+            className="contact-block"
+            style={{ display: 'block' }}
+          >
+            <div className="contact-label">GitHub</div>
+            <div className="contact-val">github.com/Chretienb</div>
+            <div className="contact-sub">Projects & source code</div>
+          </a>
+
+          <a
+            href="https://linkedin.com/in/chretien-banza-042831242"
+            target="_blank" rel="noopener noreferrer"
+            className="contact-block"
+            style={{ display: 'block' }}
+          >
+            <div className="contact-label">LinkedIn</div>
+            <div className="contact-val">/in/chretien-banza</div>
+            <div className="contact-sub">Open to collaborations</div>
+          </a>
+
+          <a
+            href="/CHRETIEN%20BANZA%202026%20Resume.pdf"
+            download="Chretien_Banza_Resume.pdf"
+            className="contact-block highlight"
+            style={{ display: 'block' }}
+          >
+            <div className="contact-label">Status</div>
+            <div className="contact-status">
+              <span className="status-dot" />
+              Open to Opportunities
+            </div>
+            <div className="contact-sub">Resume · Orem, UT · English & French</div>
+          </a>
+        </div>
+
+        <p className="contact-location" style={{ marginTop: '2rem' }}>
+          Also on{' '}
+          <a href="https://chretienbanza.substack.com" target="_blank" rel="noopener noreferrer">
+            Substack
+          </a>
+          {' '}— I write about fintech, AI, and building products.
+        </p>
       </div>
-      <p className="contact-location">Orem, UT · English & French</p>
     </section>
   )
 }
-
-export default Contact
