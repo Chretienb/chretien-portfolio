@@ -5,9 +5,11 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 function AboutPage() {
   useScrollReveal()
   return (
-    <div className="about-page">
-      <div className="about-page-header">
-        <Link to="/" className="about-back mono">← Back</Link>
+    <div>
+      <div className="wrap pt-8">
+        <Link to="/" className="font-mono text-sm text-muted-foreground hover:text-primary">
+          ← Back
+        </Link>
       </div>
       <About />
     </div>

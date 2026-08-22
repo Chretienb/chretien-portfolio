@@ -1,95 +1,129 @@
-function About() {
-  return (
-    <section id="about" className="section">
-      <h2 className="section-title">About Me</h2>
+import { Badge } from './ui/badge'
+import { Separator } from './ui/separator'
 
-      <div className="about-block">
+const interests = [
+  'Software Engineering & Fintech Infrastructure',
+  'Agentic AI — LLMs, RAG, multi-step reasoning',
+  'Startup Development & Product Architecture',
+  'Scalable Backend Systems & Async Processing',
+  'Cross-border Payments & Financial Identity',
+]
+
+const instruments = ['Acoustic guitar', 'Electric guitar', 'Bass', 'Drums', 'Piano', 'Cajón', 'Percussion', 'Tambourine']
+const languages = ['English', 'French', 'Swahili', 'Lingala']
+const values = ['Faith', 'Discipline', 'Continuous growth', 'Building things that matter']
+
+const timeline = [
+  { year: '2002', event: 'Born in Kinshasa, DRC' },
+  { year: '2018', event: 'Technical high school — circuits, robotics, first code' },
+  { year: '2022', event: 'E2i — Technical PM at Utah County Fair' },
+  { year: '2023', event: 'Co-founded Drawfi' },
+  { year: '2024', event: 'Sandbox Accelerator — Founder Track' },
+  { year: '2025', event: 'Co-founded PML · Wolverine Fund Associate · Teyka SWE' },
+  { year: '2026', event: 'NVIDIA DLI Certification · FinTech Center · B.S. Computational Data Science (Dec)' },
+]
+
+function SubHeading({ children }: { children: React.ReactNode }) {
+  return <h3 className="mb-3 mt-12 font-sans text-xl font-bold text-primary">{children}</h3>
+}
+
+export default function About() {
+  return (
+    <section id="about" className="wrap max-w-[760px] py-16">
+      <h2 className="section-title mb-8">About Me</h2>
+
+      <div className="space-y-4 font-mono text-[14px] leading-loose text-muted-foreground [&_strong]:font-bold [&_strong]:text-foreground">
         <p>
           My name is <strong>Chretien Banza</strong>. I was born in February 2002 in Kinshasa, Democratic Republic of the Congo.
         </p>
         <p>
-          From a young age, I&apos;ve been deeply curious about how things work — especially technology. That curiosity led me to a technical high school focused on electronic information systems, where I worked on circuits, robotics, and embedded systems.
+          From a young age, I've been deeply curious about how things work — especially technology. That curiosity led me to a
+          technical high school focused on electronic information systems, where I worked on circuits, robotics, and embedded
+          systems.
         </p>
+        <p>That's where I discovered programming. I wrote my first lines of code in Python:</p>
+        <code className="block w-fit rounded-none border bg-card px-4 py-2 text-primary">print("Hello, world")</code>
         <p>
-          That&apos;s where I discovered programming. I wrote my first lines of code in Python:
-        </p>
-        <code className="about-code mono">print(&quot;Hello, world&quot;)</code>
-        <p>
-          It looked small. But it changed everything. Since then, I&apos;ve been passionate about building systems, solving real problems, and using technology to create impact.
+          It looked small. But it changed everything. Since then, I've been passionate about building systems, solving real
+          problems, and using technology to create impact.
         </p>
       </div>
 
-      <h3 className="about-subtitle">What I Build</h3>
-      <p className="about-lead">I&apos;m interested in:</p>
-      <ul className="about-list">
-        <li>Software Engineering & Fintech Infrastructure</li>
-        <li>Agentic AI — LLMs, RAG, multi-step reasoning</li>
-        <li>Startup Development & Product Architecture</li>
-        <li>Scalable Backend Systems & Async Processing</li>
-        <li>Cross-border Payments & Financial Identity</li>
+      <SubHeading>What I Build</SubHeading>
+      <p className="mb-3 font-mono text-sm text-muted-foreground">I'm interested in:</p>
+      <ul className="space-y-1.5">
+        {interests.map((i) => (
+          <li key={i} className="font-mono text-[13px] leading-relaxed text-muted-foreground before:mr-2 before:text-primary before:content-['—']">
+            {i}
+          </li>
+        ))}
       </ul>
-      <p>I don&apos;t just write code — I think about architecture, scalability, and how products evolve over time.</p>
-
-      <p>
-        I also write articles on <a href="https://chretienbanza.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>.
+      <p className="mt-4 font-mono text-[13px] leading-relaxed text-muted-foreground">
+        I don't just write code — I think about architecture, scalability, and how products evolve over time.
+      </p>
+      <p className="mt-4 font-mono text-[13px] leading-relaxed text-muted-foreground">
+        I also write articles on{' '}
+        <a href="https://chretienbanza.substack.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
+          Substack
+        </a>
+        .
       </p>
 
-      <h3 className="about-subtitle">Beyond Technology</h3>
-      <p className="about-lead">I&apos;m also a musician and creative. I play:</p>
-      <ul className="about-list about-list-inline">
-        <li>Acoustic guitar</li>
-        <li>Electric guitar</li>
-        <li>Bass</li>
-        <li>Drums</li>
-        <li>Piano</li>
-        <li>Cajón</li>
-        <li>Percussion</li>
-        <li>Tambourine</li>
-      </ul>
-      <p>
-        Music has taught me creativity, timing, discipline, and collaboration — skills that translate directly into engineering and leadership. I also played soccer in high school, which shaped my resilience, teamwork, and competitive mindset.
+      <SubHeading>Beyond Technology</SubHeading>
+      <p className="mb-3 font-mono text-sm text-muted-foreground">I'm also a musician and creative. I play:</p>
+      <div className="flex flex-wrap gap-1.5">
+        {instruments.map((i) => (
+          <Badge key={i} variant="outline" className="rounded-none border-white/15 font-mono text-[11px] font-normal text-muted-foreground">
+            {i}
+          </Badge>
+        ))}
+      </div>
+      <p className="mt-4 font-mono text-[13px] leading-relaxed text-muted-foreground">
+        Music has taught me creativity, timing, discipline, and collaboration — skills that translate directly into engineering
+        and leadership. I also played soccer in high school, which shaped my resilience, teamwork, and competitive mindset.
       </p>
 
-      <h3 className="about-subtitle">A Global Perspective</h3>
-      <p>I am a multilingual speaker, fluent in:</p>
-      <ul className="about-list">
-        <li>English</li>
-        <li>French</li>
-        <li>Swahili</li>
-        <li>Lingala</li>
-      </ul>
-      <p>
-        Growing up in Central Africa and navigating international environments has given me a global perspective. I&apos;m comfortable operating across cultures, languages, and disciplines — whether in business, technology, or leadership.
+      <SubHeading>A Global Perspective</SubHeading>
+      <p className="mb-3 font-mono text-sm text-muted-foreground">I am a multilingual speaker, fluent in:</p>
+      <div className="flex flex-wrap gap-1.5">
+        {languages.map((l) => (
+          <Badge key={l} variant="outline" className="rounded-none border-[#58a6ff]/30 font-mono text-[11px] font-normal text-[#58a6ff]">
+            {l}
+          </Badge>
+        ))}
+      </div>
+      <p className="mt-4 font-mono text-[13px] leading-relaxed text-muted-foreground">
+        Growing up in Central Africa and navigating international environments has given me a global perspective. I'm
+        comfortable operating across cultures, languages, and disciplines — whether in business, technology, or leadership.
       </p>
 
-      <h3 className="about-subtitle">Core Values</h3>
-      <ul className="about-list">
-        <li>Faith</li>
-        <li>Discipline</li>
-        <li>Continuous growth</li>
-        <li>Building things that matter</li>
+      <SubHeading>Core Values</SubHeading>
+      <div className="flex flex-wrap gap-1.5">
+        {values.map((v) => (
+          <Badge key={v} variant="outline" className="rounded-none border-primary/30 font-mono text-[11px] font-normal text-primary">
+            {v}
+          </Badge>
+        ))}
+      </div>
+
+      <SubHeading>Timeline</SubHeading>
+      <ul>
+        {timeline.map((t, i) => (
+          <li key={t.year}>
+            <div className="flex gap-4 py-3">
+              <span className="w-14 shrink-0 font-mono text-sm font-bold text-primary">{t.year}</span>
+              <span className="font-mono text-[13px] leading-relaxed text-muted-foreground">{t.event}</span>
+            </div>
+            {i < timeline.length - 1 && <Separator />}
+          </li>
+        ))}
       </ul>
 
-      <h3 className="about-subtitle">Timeline</h3>
-      <ul className="about-timeline">
-        <li><span className="about-year mono">2002</span> Born in Kinshasa, DRC</li>
-        <li><span className="about-year mono">2018</span> Technical high school — circuits, robotics, first code</li>
-        <li><span className="about-year mono">2022</span> E2i — Technical PM at Utah County Fair</li>
-        <li><span className="about-year mono">2023</span> Co-founded Drawfi</li>
-        <li><span className="about-year mono">2024</span> Sandbox Accelerator — Founder Track</li>
-        <li><span className="about-year mono">2025</span> Co-founded PML · Wolverine Fund Associate · Teyka SWE</li>
-        <li><span className="about-year mono">2026</span> NVIDIA DLI Certification · FinTech Center · B.S. Computational Data Science (Dec)</li>
-      </ul>
-
-      <h3 className="about-subtitle">Who I Am</h3>
-      <p className="about-statement">
-        I&apos;m a builder. A technologist. A musician. A global thinker.
-      </p>
-      <p>
+      <SubHeading>Who I Am</SubHeading>
+      <p className="font-sans text-lg font-bold text-foreground">I'm a builder. A technologist. A musician. A global thinker.</p>
+      <p className="mt-3 font-mono text-[13px] leading-relaxed text-muted-foreground">
         I believe in faith, discipline, continuous growth, and building things that matter. This is just the beginning.
       </p>
     </section>
   )
 }
-
-export default About

@@ -1,3 +1,5 @@
+import { Card } from './ui/card'
+
 const certs = [
   {
     issuer: 'NVIDIA',
@@ -31,31 +33,31 @@ export default function Certifications() {
         <h2 className="section-title" data-reveal>
           Licenses &amp; Certs<span className="cursor-blink" />
         </h2>
-      </div>
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
-        <div className="cert-list" data-reveal>
+        <div className="space-y-4" data-reveal>
           {certs.map((c) => (
-            <div key={c.title} className="cert-card">
-              <div className="cert-header">
+            <Card key={c.title} className="rounded-none p-6">
+              <div className="mb-4 flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
                 <div>
-                  <div className="cert-issuer">{c.issuer}</div>
-                  <div className="cert-title">{c.title}</div>
+                  <div className="font-mono text-xs font-bold uppercase tracking-wide text-primary">{c.issuer}</div>
+                  <div className="mt-1 font-sans text-base font-bold">{c.title}</div>
                 </div>
-                <div className="cert-meta">
-                  <span className="cert-year">
-                    {'expires' in c ? `${c.issued} · Expires ${c.expires}` : `Issued ${c.issued}`}
-                  </span>
-                  <span className="cert-id">ID: {c.credentialId}</span>
+                <div className="shrink-0 text-left font-mono text-xs text-muted-foreground sm:text-right">
+                  <div>{'expires' in c ? `${c.issued} · Expires ${c.expires}` : `Issued ${c.issued}`}</div>
+                  <div className="text-muted-foreground/60">ID: {c.credentialId}</div>
                 </div>
               </div>
-              <ul className="cert-bullets">
-                {c.bullets.map(b => <li key={b}>{b}</li>)}
+              <ul className="mb-4 space-y-1">
+                {c.bullets.map((b) => (
+                  <li key={b} className="font-mono text-[13px] leading-relaxed text-muted-foreground before:mr-2 before:text-primary before:content-['—']">
+                    {b}
+                  </li>
+                ))}
               </ul>
-              <a href={c.link.url} target="_blank" rel="noopener noreferrer" className="cert-link">
+              <a href={c.link.url} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-primary hover:text-primary/80">
                 {c.link.label}
               </a>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

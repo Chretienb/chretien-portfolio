@@ -1,3 +1,9 @@
+import { Download } from 'lucide-react'
+import { Card } from './ui/card'
+import { cn } from '../lib/utils'
+
+const RESUME_PATH = '/Chretien_Banza_Resume.pdf'
+
 export default function Contact() {
   return (
     <section id="contact">
@@ -7,60 +13,73 @@ export default function Contact() {
           Let's Build Something<span className="cursor-blink" />
         </h2>
 
-        <div className="contact-grid" data-reveal>
-          <a
-            href="mailto:chretienbanza1@gmail.com"
-            className="contact-block"
-            style={{ display: 'block' }}
-          >
-            <div className="contact-label">Email</div>
-            <div className="contact-val">chretienbanza1@gmail.com</div>
-            <div className="contact-sub">Respond within 24 hours</div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-reveal>
+          <a href="mailto:chretienbanza1@gmail.com" className="block">
+            <Card className="rounded-none p-6 transition-colors hover:border-primary/50">
+              <div className="mb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">Email</div>
+              <div className="mb-1 font-sans text-lg font-bold">chretienbanza1@gmail.com</div>
+              <div className="font-mono text-xs text-muted-foreground/70">Respond within 24 hours</div>
+            </Card>
           </a>
 
-          <a
-            href="https://github.com/Chretienb"
-            target="_blank" rel="noopener noreferrer"
-            className="contact-block"
-            style={{ display: 'block' }}
-          >
-            <div className="contact-label">GitHub</div>
-            <div className="contact-val">github.com/Chretienb</div>
-            <div className="contact-sub">Projects & source code</div>
+          <a href="https://github.com/Chretienb" target="_blank" rel="noopener noreferrer" className="block">
+            <Card className="rounded-none p-6 transition-colors hover:border-primary/50">
+              <div className="mb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">GitHub</div>
+              <div className="mb-1 font-sans text-lg font-bold">github.com/Chretienb</div>
+              <div className="font-mono text-xs text-muted-foreground/70">Projects & source code</div>
+            </Card>
           </a>
 
-          <a
-            href="https://linkedin.com/in/chretien-banza-042831242"
-            target="_blank" rel="noopener noreferrer"
-            className="contact-block"
-            style={{ display: 'block' }}
-          >
-            <div className="contact-label">LinkedIn</div>
-            <div className="contact-val">/in/chretien-banza</div>
-            <div className="contact-sub">Open to collaborations</div>
+          <a href="https://linkedin.com/in/chretien-banza-042831242" target="_blank" rel="noopener noreferrer" className="block">
+            <Card className="rounded-none p-6 transition-colors hover:border-primary/50">
+              <div className="mb-2 font-mono text-xs uppercase tracking-wide text-muted-foreground">LinkedIn</div>
+              <div className="mb-1 font-sans text-lg font-bold">/in/chretien-banza</div>
+              <div className="font-mono text-xs text-muted-foreground/70">Open to collaborations</div>
+            </Card>
           </a>
 
-          <a
-            href="/CHRETIEN%20BANZA%202026%20Resume.pdf"
-            download="Chretien_Banza_Resume.pdf"
-            className="contact-block highlight"
-            style={{ display: 'block' }}
+          <Card
+            role="link"
+            tabIndex={0}
+            onClick={() => window.open(RESUME_PATH, '_blank', 'noopener,noreferrer')}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                window.open(RESUME_PATH, '_blank', 'noopener,noreferrer')
+              }
+            }}
+            className={cn(
+              'cursor-pointer rounded-none border-primary/40 bg-primary/[0.06] p-6 transition-colors hover:border-primary'
+            )}
           >
-            <div className="contact-label">Status</div>
-            <div className="contact-status">
-              <span className="status-dot" />
+            <div className="mb-2 flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground">Resume</span>
+              <a
+                href={RESUME_PATH}
+                download="Chretien_Banza_Resume.pdf"
+                onClick={(e) => e.stopPropagation()}
+                aria-label="Download resume PDF"
+                className="-m-2.5 flex items-center gap-1 p-2.5 font-mono text-[11px] text-muted-foreground/70 transition-colors hover:text-primary"
+              >
+                <Download className="h-4 w-4" />
+                <span className="hidden sm:inline">Download</span>
+              </a>
+            </div>
+            <div className="mb-1 font-sans text-lg font-bold text-primary">View Resume (PDF) →</div>
+            <div className="mb-2 flex items-center gap-1.5 font-mono text-xs text-muted-foreground/70">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Open to Opportunities
             </div>
-            <div className="contact-sub">Resume · Orem, UT · English & French</div>
-          </a>
+            <div className="font-mono text-xs text-muted-foreground/70">Orem, UT · English &amp; French</div>
+          </Card>
         </div>
 
-        <p className="contact-location" style={{ marginTop: '2rem' }}>
+        <p className="mt-8 font-mono text-[13px] text-muted-foreground">
           Also on{' '}
-          <a href="https://chretienbanza.substack.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://chretienbanza.substack.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80">
             Substack
-          </a>
-          {' '}— I write about fintech, AI, and building products.
+          </a>{' '}
+          — I write about fintech, AI, and building products.
         </p>
       </div>
     </section>

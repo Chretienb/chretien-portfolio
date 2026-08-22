@@ -1,3 +1,5 @@
+import { Separator } from './ui/separator'
+
 const experiences = [
   {
     date: 'Dec 2023 — Now',
@@ -67,17 +69,24 @@ export default function Experience() {
           Where I've Worked<span className="cursor-blink" />
         </h2>
 
-        <div className="exp-list" data-reveal>
-          {experiences.map((e) => (
-            <div key={e.company} className="exp-item">
-              <div className="exp-date">{e.date}</div>
-              <div>
-                <div className="exp-role">{e.role}</div>
-                <div className="exp-co">{e.company}</div>
-                <ul className="exp-bullets">
-                  {e.bullets.map(b => <li key={b}>{b}</li>)}
-                </ul>
+        <div data-reveal>
+          {experiences.map((e, i) => (
+            <div key={e.company}>
+              <div className="grid grid-cols-1 gap-2 py-8 sm:grid-cols-[160px_1fr] sm:gap-8">
+                <div className="font-mono text-xs text-muted-foreground">{e.date}</div>
+                <div>
+                  <div className="font-sans text-lg font-bold">{e.role}</div>
+                  <div className="mb-3 font-mono text-sm text-primary">{e.company}</div>
+                  <ul className="space-y-1.5">
+                    {e.bullets.map((b) => (
+                      <li key={b} className="font-mono text-[13px] leading-relaxed text-muted-foreground before:mr-2 before:text-primary before:content-['—']">
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
+              {i < experiences.length - 1 && <Separator />}
             </div>
           ))}
         </div>
